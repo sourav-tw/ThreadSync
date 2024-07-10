@@ -15,7 +15,7 @@ public class Lock : Base
         {
             new Thread(() => syncProcessor.Write()).Start();
         }
-        Thread.Sleep(2001);
+        Thread.Sleep(4001);
         syncProcessor.SetStrategy(new LockStrategy());
         Console.WriteLine("------------------");
         Console.WriteLine("With Lock Strategy");

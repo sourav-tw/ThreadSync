@@ -15,7 +15,7 @@ public class Semaphore : Base
         {
             new Thread(() => syncProcessor.Write()).Start();
         }
-        Thread.Sleep(2001);
+        Thread.Sleep(4001);
         syncProcessor.SetStrategy(new SemaphorStrategy());
         Console.WriteLine("------------------");
         Console.WriteLine("With Semaphore Strategy");

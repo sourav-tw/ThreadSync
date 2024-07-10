@@ -9,16 +9,20 @@ public class ManualResetEventStrategy : ISyncStrategy
     {
         if (!shouldLock)
         {
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
             Thread.Sleep(2000);
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
         }
         else
         {
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
                 _manualResetEvent.Reset();
                 Thread.Sleep(2000);
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+                Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                                  $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
                 _manualResetEvent.Set();
         }
     }
@@ -27,16 +31,19 @@ public class ManualResetEventStrategy : ISyncStrategy
     {
         if (!shouldLock)
         {
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
             Thread.Sleep(500);
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has read the file");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} has read the file");
         }
         else
         {
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
                 _manualResetEvent.WaitOne();
-                Thread.Sleep(500);
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has read the file");
+                Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                                  $"Thread {Thread.CurrentThread.ManagedThreadId} has read the file");
         }
     }
     }

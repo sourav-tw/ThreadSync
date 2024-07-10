@@ -9,17 +9,22 @@ public class AutoResetEventStrategy: ISyncStrategy
     {
         if (!shouldLock)
         {
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
             Thread.Sleep(2000);
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
         }
         else
         {
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
             _autoResetEvent.WaitOne();
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
             Thread.Sleep(2000);
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
             _autoResetEvent.Set();
         }
     }
@@ -29,7 +34,8 @@ public class AutoResetEventStrategy: ISyncStrategy
         if (shouldLock)
         {
             Thread.Sleep(2500);
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has started reading");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} has started reading");
             _autoResetEvent.Set();
         }
     }

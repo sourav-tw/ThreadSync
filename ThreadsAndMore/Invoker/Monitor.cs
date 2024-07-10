@@ -15,7 +15,7 @@ public class Monitor: Base
         {
             new Thread(() => syncProcessor.Write()).Start();
         }
-        Thread.Sleep(2001);
+        Thread.Sleep(4001);
         syncProcessor.SetStrategy(new MonitorStrategy());
         Console.WriteLine("------------------");
         Console.WriteLine("With Monitor Strategy");

@@ -8,18 +8,24 @@ public class LockStrategy : ISyncStrategy {
     {
         if (!shouldLock)
         {
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
+            // Write to console the current date time with milisecond precision
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
             Thread.Sleep(2000);
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
         }
         else
         {
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
                 lock (_lock)
                 {
-                    Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has started writing");
+                    Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                                      $"Thread {Thread.CurrentThread.ManagedThreadId} has started writing");
                     Thread.Sleep(2000);
-                    Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+                    Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                                      $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
                 }
         }
     }

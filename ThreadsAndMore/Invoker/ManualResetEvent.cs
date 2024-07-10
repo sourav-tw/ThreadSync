@@ -16,7 +16,7 @@ public class ManualResetEvent: Base
         {
             new Thread(() => syncProcessor.Read()).Start();
         }
-        Thread.Sleep(2001);
+        Thread.Sleep(4001);
         syncProcessor.SetStrategy(new ManualResetEventStrategy());
         Console.WriteLine("------------------");
         Console.WriteLine("With ManualResetEvent Strategy");

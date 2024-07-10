@@ -9,19 +9,25 @@ public class MonitorStrategy: ISyncStrategy
     {
         if (!shouldLock)
         {
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
             Thread.Sleep(2000);
-            Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
         }
         else
         {
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
+            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                              $"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
                 Monitor.Enter(_lock);
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has started writing");
+                Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                                  $"Thread {Thread.CurrentThread.ManagedThreadId} has started writing");
                 Thread.Sleep(2000);
                 Monitor.Exit(_lock);   
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has released the monitor lock");
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+                Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                                  $"Thread {Thread.CurrentThread.ManagedThreadId} has released the monitor lock");
+                Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}  " +
+                                  $"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
         }
     }
 
