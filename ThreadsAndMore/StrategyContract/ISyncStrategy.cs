@@ -1,7 +1,7 @@
-namespace ThreadsAndMore;
+namespace ThreadsAndMore.StrategyContract;
 
 public interface ISyncStrategy
 {
-    public void Write();
-    public void Read();
+    public void Write(bool shouldLock, int threadNo=1);
+    public void Read(bool shouldLock);
 }

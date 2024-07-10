@@ -1,6 +1,6 @@
 namespace ThreadsAndMore.Invoker;
 
-public class Base
+public abstract class Base
 {
-    
+    public abstract void Invoke();
 }

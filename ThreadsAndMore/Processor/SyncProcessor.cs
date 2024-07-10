@@ -1,17 +1,20 @@
-namespace ThreadsAndMore;
+using ThreadsAndMore.StrategyContract;
 
-public class SyncProcessor(ISyncStrategy strategy)
+namespace ThreadsAndMore.Processor;
+
+public class SyncProcessor(ISyncStrategy strategy, bool shouldLock = false)
 {
     public void SetStrategy(ISyncStrategy syncStrategy)
     {
         strategy = syncStrategy;
+        shouldLock = true;
     }
-    public void Write()
+    public void Write(int i = 1)
     {
-        strategy.Write();
+        strategy.Write(shouldLock,i);
     }
     public void Read()
     {
-        strategy.Read();
+        strategy.Read(shouldLock);
     }
 }
