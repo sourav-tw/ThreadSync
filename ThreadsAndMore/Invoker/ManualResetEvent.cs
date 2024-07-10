@@ -12,7 +12,7 @@ public class ManualResetEvent: Base
         Console.WriteLine("------------------");
         SyncProcessor syncProcessor = new SyncProcessor(new ManualResetEventStrategy());
         new Thread(() => syncProcessor.Write()).Start();
-        for (int i = 0; i < 3; i++)
+        for (var i = 0; i < 3; i++)
         {
             new Thread(() => syncProcessor.Read()).Start();
         }

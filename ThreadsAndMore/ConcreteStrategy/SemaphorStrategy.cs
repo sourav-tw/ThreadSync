@@ -5,7 +5,7 @@ namespace ThreadsAndMore.ConcreteStrategy;
 public class SemaphorStrategy: ISyncStrategy
 {
     Semaphore semaphore = new Semaphore(2, 2);
-    public void Write(bool shouldLock, int threadNo = 1)
+    public void Write(bool shouldLock)
     {
         if (!shouldLock)
         {

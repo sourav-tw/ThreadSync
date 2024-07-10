@@ -9,9 +9,9 @@ public class SyncProcessor(ISyncStrategy strategy, bool shouldLock = false)
         strategy = syncStrategy;
         shouldLock = true;
     }
-    public void Write(int i = 1)
+    public void Write()
     {
-        strategy.Write(shouldLock,i);
+        strategy.Write(shouldLock);
     }
     public void Read()
     {

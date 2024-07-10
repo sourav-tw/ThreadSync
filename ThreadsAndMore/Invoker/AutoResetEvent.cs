@@ -13,7 +13,7 @@ public class AutoResetEvent : Base
         SyncProcessor syncProcessor = new SyncProcessor(new AutoResetEventStrategy());
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         Thread.Sleep(2001);
         syncProcessor.SetStrategy(new AutoResetEventStrategy());
@@ -22,7 +22,7 @@ public class AutoResetEvent : Base
         Console.WriteLine("------------------");
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         
         Thread.Sleep(7001);
@@ -32,7 +32,7 @@ public class AutoResetEvent : Base
         Console.WriteLine("------------------");
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         new Thread(() => syncProcessor.Read()).Start();
     }

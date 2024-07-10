@@ -5,7 +5,7 @@ namespace ThreadsAndMore.ConcreteStrategy;
 public class AutoResetEventStrategy: ISyncStrategy
 {
     AutoResetEvent _autoResetEvent = new AutoResetEvent(true);
-    public void Write(bool shouldLock, int threadNo = 1)
+    public void Write(bool shouldLock)
     {
         if (!shouldLock)
         {

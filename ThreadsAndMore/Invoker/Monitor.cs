@@ -13,7 +13,7 @@ public class Monitor: Base
         SyncProcessor syncProcessor = new SyncProcessor(new MonitorStrategy());
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         Thread.Sleep(2001);
         syncProcessor.SetStrategy(new MonitorStrategy());
@@ -22,15 +22,7 @@ public class Monitor: Base
         Console.WriteLine("------------------");
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
-        }
-        Thread.Sleep(6001);
-        Console.WriteLine("------------------");
-        Console.WriteLine("With Exception Cases");
-        Console.WriteLine("------------------");
-        for (int i = 0; i < 5; i++)
-        {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
     }
 }

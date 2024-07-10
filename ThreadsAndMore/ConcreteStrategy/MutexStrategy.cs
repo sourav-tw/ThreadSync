@@ -5,7 +5,7 @@ namespace ThreadsAndMore.ConcreteStrategy;
 public class MutexStrategy: ISyncStrategy
 {
     private Mutex mx = new Mutex();
-    public void Write(bool shouldLock, int threadNo = 1)
+    public void Write(bool shouldLock)
     {
         if (!shouldLock)
         {

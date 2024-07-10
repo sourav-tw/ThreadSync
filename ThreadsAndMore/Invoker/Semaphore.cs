@@ -13,7 +13,7 @@ public class Semaphore : Base
         SyncProcessor syncProcessor = new SyncProcessor(new SemaphorStrategy());
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         Thread.Sleep(2001);
         syncProcessor.SetStrategy(new SemaphorStrategy());
@@ -22,7 +22,7 @@ public class Semaphore : Base
         Console.WriteLine("------------------");
         for (int i = 0; i < 5; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
     }
 }

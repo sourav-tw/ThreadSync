@@ -13,7 +13,7 @@ Console.WriteLine("------------------");
         SyncProcessor syncProcessor = new SyncProcessor(new MutexStrategy());
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         Thread.Sleep(2001);
         syncProcessor.SetStrategy(new MutexStrategy());
@@ -22,7 +22,7 @@ Console.WriteLine("------------------");
         Console.WriteLine("------------------");
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         
         Thread.Sleep(7001);
@@ -32,7 +32,7 @@ Console.WriteLine("------------------");
         Console.WriteLine("------------------");
         for (int i = 0; i < 3; i++)
         {
-            new Thread(() => syncProcessor.Write(i)).Start();
+            new Thread(() => syncProcessor.Write()).Start();
         }
         
         new Thread(() => syncProcessor.Read()).Start();

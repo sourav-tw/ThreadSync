@@ -4,7 +4,7 @@ namespace ThreadsAndMore.ConcreteStrategy;
 
 public class LockStrategy : ISyncStrategy {
     private readonly object _lock = new object();
-    public void Write(bool shouldLock, int threadNo)
+    public void Write(bool shouldLock)
     {
         if (!shouldLock)
         {
@@ -14,14 +14,13 @@ public class LockStrategy : ISyncStrategy {
         }
         else
         {
-            lock (_lock)
-            {
-                if (threadNo == 4)
-                    throw new ApplicationException("No exception handling");
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
-                Thread.Sleep(2000);
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
-            }
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
+                lock (_lock)
+                {
+                    Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has started writing");
+                    Thread.Sleep(2000);
+                    Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
+                }
         }
     }
 

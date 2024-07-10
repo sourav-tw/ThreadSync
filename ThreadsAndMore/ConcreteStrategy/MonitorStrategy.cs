@@ -5,7 +5,7 @@ namespace ThreadsAndMore.ConcreteStrategy;
 public class MonitorStrategy: ISyncStrategy
 {
     private readonly object _lock = new object();
-    public void Write(bool shouldLock, int threadNo)
+    public void Write(bool shouldLock)
     {
         if (!shouldLock)
         {
@@ -15,23 +15,13 @@ public class MonitorStrategy: ISyncStrategy
         }
         else
         {
-            try
-            {
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is waiting");
                 Monitor.Enter(_lock);
-                if (threadNo == 5)
-                    throw new ApplicationException("No exception handling");
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} is writing");
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has started writing");
                 Thread.Sleep(2000);
-                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
                 Monitor.Exit(_lock);   
-            }
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has released the monitor lock");
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} has finished writing");
         }
     }
 

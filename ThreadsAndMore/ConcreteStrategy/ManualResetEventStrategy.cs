@@ -5,7 +5,7 @@ namespace ThreadsAndMore.ConcreteStrategy;
 public class ManualResetEventStrategy : ISyncStrategy
 {
     ManualResetEvent _manualResetEvent = new ManualResetEvent(false);
-    public void Write(bool shouldLock, int threadNo = 1)
+    public void Write(bool shouldLock)
     {
         if (!shouldLock)
         {
